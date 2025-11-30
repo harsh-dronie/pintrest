@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+  </head>
+  <body>
+   <div class="extraDiv">
+    <div class="profile-card">
+        <div class="profile-image">
+          <img src="https://i.pravatar.cc/150?img=32" alt="User" />
+        </div>
+        <h2>@<%= user.username %></h2>
+        <p><%= user.fullName %></p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <a href="/logout" class="btn btn-danger" style="margin-top: 10px;"> Logout</a>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="text" name="filecaption" placeholder="some caption">
+            <input type="file" name="file">
+            <input type="submit">
+        </form>
+    </div>
+
+   </div>
+      <div class="container">
+        <div class="cards flex" >
+            <% user.posts.forEach(function(post){ %>
+                <div class="card" style="width: 18rem;">
+                    <img src="/images/uploads/<%= post.image %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <a href="#" class="btn btn-primary"> <%= post.imageText %> </a>
+                    </div>
+                </div>
+           <%  }) %>
+        </div>
+        
+      </div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
